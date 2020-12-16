@@ -11,11 +11,12 @@ class SearchBar extends React.Component{
     }
     render(){
         return (
-            <div className="ui segment">
+            <div className="ui segment" style={{marginTop: "1rem"}}>
                 <form className="ui form" onSubmit={this.onFormSubmit}>
                     <div className="field">
-                        <label>Video Search</label>
+                        <label style={{textAlign: "center"}}>An Unbiased Youtube Search</label>
                         <input 
+                            style={{textAlign: "center"}}
                             type="text"
                             placeholder="Start Typing . . . ."
                             value={this.state.searchTerm}
