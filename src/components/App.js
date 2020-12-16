@@ -8,7 +8,7 @@ import VideoList from "./VideoList";
 class App extends React.Component{
     constructor(props){
         super(props);
-        this.state = {videoList: []};
+        this.state = {videoList: [], selectedVideo: null};
     }
     searchResults = async (searchTerm) => {
         const response = await youtube.get('/search', {
@@ -18,11 +18,15 @@ class App extends React.Component{
         });
         this.setState({videoList: response.data.items});
     }
+    onVideoSelect = (video) => {
+        console.log('You Clicked');
+        console.log(video);
+    }
     render(){
         return (
             <div className="ui container">
                 <SearchBar onSearchSubmit={this.searchResults}/>
-                <VideoList videos={this.state.videoList}/>
+                <VideoList videos={this.state.videoList} onVideoSelect={this.onVideoSelect}/>
             </div>
         );
     }
