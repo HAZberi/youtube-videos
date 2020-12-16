@@ -21,7 +21,7 @@ class App extends React.Component{
     render(){
         return (
             <div className="ui container">
-                <SearchBar onSubmit={this.searchResults}/>
+                <SearchBar onSearchSubmit={this.searchResults}/>
             </div>
         );
     }
