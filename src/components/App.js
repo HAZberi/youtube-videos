@@ -2,6 +2,7 @@ import React from "react";
 import SearchBar from "./SearchBar";
 import youtube from '../api/youtube';
 import "semantic-ui-css/semantic.min.css";
+import VideoList from "./VideoList";
 
 
 class App extends React.Component{
@@ -16,12 +17,12 @@ class App extends React.Component{
             }
         });
         this.setState({videoList: response.data.items});
-        console.log(this.state);
     }
     render(){
         return (
             <div className="ui container">
                 <SearchBar onSearchSubmit={this.searchResults}/>
+                <VideoList videos={this.state.videoList}/>
             </div>
         );
     }
