@@ -57,7 +57,12 @@ class App extends React.Component {
                 videos={this.state.videoListPerPage}
                 onVideoSelect={this.onVideoSelect}
               />
-              <Pagination resultsPerPage={this.resultsPerPage} videoList={this.state.videoList} currentPage={this.state.currentPage} displayNewList={this.searchResultsPerPage}/>
+              <Pagination
+                resultsPerPage={this.resultsPerPage}
+                videoList={this.state.videoList}
+                currentPage={this.state.currentPage}
+                displayNewList={this.searchResultsPerPage}
+              />
             </div>
           </div>
         </div>
