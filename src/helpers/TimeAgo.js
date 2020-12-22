@@ -8,32 +8,32 @@ const timeAgo = function (date) {
   const timeElapsedInMonths = timeElapsedInDays / 30.42;
   const timeElapsedInYears = timeElapsedInMonths / 12;
   if (timeElapsedInYears > 1) {
-    return `${Math.round(timeElapsedInYears)} ${
+    return `${Math.trunc(timeElapsedInYears)} ${
       timeElapsedInYears < 2 ? "year ago" : "years ago"
     }`;
   }
   if (timeElapsedInMonths > 1 && timeElapsedInMonths < 13) {
-    return `${Math.round(timeElapsedInMonths)} ${
+    return `${Math.trunc(timeElapsedInMonths)} ${
       timeElapsedInMonths < 2 ? "month ago" : "months ago"
     }`;
   }
   if (timeElapsedInDays > 1 && timeElapsedInDays < 31) {
-    return `${Math.round(timeElapsedInDays)} ${
+    return `${Math.trunc(timeElapsedInDays)} ${
       timeElapsedInDays < 2 ? "day ago" : "days ago"
     }`;
   }
   if (timeElapsedInHours > 1 && timeElapsedInHours < 24) {
-    return `${Math.round(timeElapsedInHours)} ${
+    return `${Math.trunc(timeElapsedInHours)} ${
       timeElapsedInHours < 2 ? "hour ago" : "hours ago"
     }`;
   }
   if (timeElapsedInMinutes > 1 && timeElapsedInMinutes < 60) {
-    return `${Math.round(timeElapsedInMinutes)} ${
+    return `${Math.trunc(timeElapsedInMinutes)} ${
       timeElapsedInMinutes < 2 ? "minute ago" : "minutes ago"
     }`;
   }
   if (timeElapsedInSeconds > 1 && timeElapsedInSeconds < 60) {
-    return `${Math.round(timeElapsedInSeconds)} ${
+    return `${Math.trunc(timeElapsedInSeconds)} ${
       timeElapsedInSeconds < 2 ? "second ago" : "seconds ago"
     }`;
   }
