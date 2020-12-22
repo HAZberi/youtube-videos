@@ -24,6 +24,7 @@ class App extends React.Component {
     const response = await youtube.get("/search", {
       params: {
         q: searchTerm,
+        safeSearch: 'none'
       },
     });
     this.setState({
