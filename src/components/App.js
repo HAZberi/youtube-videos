@@ -4,7 +4,6 @@ import youtube from "../api/youtube";
 import "semantic-ui-css/semantic.min.css";
 import VideoList from "./VideoList";
 import VideoDetail from "./VIdeoDetail";
-import Pagination from "./Pagination";
 
 class App extends React.Component {
   constructor(props) {
@@ -12,10 +11,7 @@ class App extends React.Component {
     this.state = {
       videoList: [],
       selectedVideo: null,
-      currentPage: 1,
-      videoListPerPage: [],
     };
-    this.resultsPerPage = 5;
   }
   componentDidMount() {
     this.searchResults("canada news");
@@ -24,26 +20,18 @@ class App extends React.Component {
     const response = await youtube.get("/search", {
       params: {
         q: searchTerm,
-        safeSearch: 'none'
+        safeSearch: "none",
       },
     });
     this.setState({
       videoList: response.data.items,
       selectedVideo: response.data.items[0],
     });
-    this.searchResultsPerPage();
   };
   onVideoSelect = (video) => {
     this.setState({ selectedVideo: video });
   };
-  searchResultsPerPage = (page = 1) => {
-    const start = (page - 1) * this.resultsPerPage;
-    const end = page * this.resultsPerPage;
-    this.setState({
-      currentPage: page,
-      videoListPerPage: this.state.videoList.slice(start, end),
-    });
-  };
+
   render() {
     return (
       <div className="ui container">
@@ -55,14 +43,8 @@ class App extends React.Component {
             </div>
             <div className="five wide column">
               <VideoList
-                videos={this.state.videoListPerPage}
+                videos={this.state.videoList}
                 onVideoSelect={this.onVideoSelect}
-              />
-              <Pagination
-                resultsPerPage={this.resultsPerPage}
-                videoList={this.state.videoList}
-                currentPage={this.state.currentPage}
-                displayNewList={this.searchResultsPerPage}
               />
             </div>
           </div>
