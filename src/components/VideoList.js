@@ -10,6 +10,7 @@ const VideoList = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [videoListPerPage, setVideoListPerPage] = useState([]);
 
+
   useEffect(() => {
     const searchResultsPerPage = (page = 1) => {
       const start = (page - 1) * RESULTS_PER_PAGE;
@@ -18,6 +19,10 @@ const VideoList = (props) => {
     };
     searchResultsPerPage(currentPage);
   }, [currentPage, props.videos]);
+
+  useEffect(()=>{
+    setCurrentPage(1);
+  },[props.videos])
 
   const renderedList = videoListPerPage.map((video) => {
     return (
